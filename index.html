@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 ¼­¿ï µ¥ÀÌÆ® ÇÃ·¡³Ê</title>
+    <title>2025 ì„œìš¸ ë°ì´íŠ¸ í”Œëž˜ë„ˆ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,38 +65,38 @@
     <div class="container mx-auto p-4 md:p-8">
 
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-amber-900">2025³â 7¿ù 27ÀÏ, ¿Ïº®ÇÑ ¼­¿ï µ¥ÀÌÆ® Ã£±â</h1>
-            <p class="mt-4 text-lg text-stone-600">»ç¶ûÇÏ´Â »ç¶÷°ú ÇÔ²²ÇÒ Æ¯º°ÇÑ ÇÏ·ç, ÃëÇâ¿¡ ¸Â´Â ÃÖ°íÀÇ ½Ç³» µ¥ÀÌÆ®¸¦ Ã£¾Æº¸¼¼¿ä.</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-amber-900">2025ë…„ 7ì›” 27ì¼, ì™„ë²½í•œ ì„œìš¸ ë°ì´íŠ¸ ì°¾ê¸°</h1>
+            <p class="mt-4 text-lg text-stone-600">ì‚¬ëž‘í•˜ëŠ” ì‚¬ëžŒê³¼ í•¨ê»˜í•  íŠ¹ë³„í•œ í•˜ë£¨, ì·¨í–¥ì— ë§žëŠ” ìµœê³ ì˜ ì‹¤ë‚´ ë°ì´íŠ¸ë¥¼ ì°¾ì•„ë³´ì„¸ìš”.</p>
         </header>
 
         <section id="filters" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg mb-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div>
-                    <h3 class="font-bold text-lg mb-3 text-amber-800">1. ¾î¶² ºÐÀ§±â¸¦ ¿øÇÏ¼¼¿ä?</h3>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">1. ì–´ë–¤ ë¶„ìœ„ê¸°ë¥¼ ì›í•˜ì„¸ìš”?</h3>
                     <div id="vibe-filters" class="flex flex-wrap gap-2">
-                        <button data-filter-group="vibe" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">¸ðµÎ</button>
-                        <button data-filter-group="vibe" data-filter="romantic" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ·Î¸ÇÆ½ Å¬·¡½Ä</button>
-                        <button data-filter-group="vibe" data-filter="trendy" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">? Æ®·»µð & È°±âÂù</button>
-                        <button data-filter-group="vibe" data-filter="intellectual" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ÁöÀûÀÎ ¿¹¼ú °¨»ó</button>
-                        <button data-filter-group="vibe" data-filter="unique" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ÀÌ»öÀûÀÎ °æÇè</button>
+                        <button data-filter-group="vibe" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ëª¨ë‘</button>
+                        <button data-filter-group="vibe" data-filter="romantic" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ë¡œë§¨í‹± í´ëž˜ì‹</button>
+                        <button data-filter-group="vibe" data-filter="trendy" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">? íŠ¸ë Œë”” & í™œê¸°ì°¬</button>
+                        <button data-filter-group="vibe" data-filter="intellectual" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ì§€ì ì¸ ì˜ˆìˆ  ê°ìƒ</button>
+                        <button data-filter-group="vibe" data-filter="unique" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? ì´ìƒ‰ì ì¸ ê²½í—˜</button>
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-3 text-amber-800">2. 1ÀÎ´ç ¿¹»êÀº ¾ó¸¶ÀÎ°¡¿ä?</h3>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">2. 1ì¸ë‹¹ ì˜ˆì‚°ì€ ì–¼ë§ˆì¸ê°€ìš”?</h3>
                     <div id="price-filters" class="flex flex-wrap gap-2">
-                        <button data-filter-group="price" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">¸ðµÎ</button>
-                        <button data-filter-group="price" data-filter="0" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">¹«·á</button>
-                        <button data-filter-group="price" data-filter="20000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">~2¸¸¿ø</button>
-                        <button data-filter-group="price" data-filter="50000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">2~5¸¸¿ø</button>
-                        <button data-filter-group="price" data-filter="50001" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">5¸¸¿ø ÀÌ»ó</button>
+                        <button data-filter-group="price" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ëª¨ë‘</button>
+                        <button data-filter-group="price" data-filter="0" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ë¬´ë£Œ</button>
+                        <button data-filter-group="price" data-filter="20000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">~2ë§Œì›</button>
+                        <button data-filter-group="price" data-filter="50000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">2~5ë§Œì›</button>
+                        <button data-filter-group="price" data-filter="50001" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">5ë§Œì› ì´ìƒ</button>
                     </div>
                 </div>
                  <div>
-                    <h3 class="font-bold text-lg mb-3 text-amber-800">3. ¾î¶² È°µ¿À» Ã£À¸¼¼¿ä?</h3>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">3. ì–´ë–¤ í™œë™ì„ ì°¾ìœ¼ì„¸ìš”?</h3>
                     <div id="type-filters" class="flex flex-wrap gap-2">
-                        <button data-filter-group="type" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">¸ðµÎ</button>
-                        <button data-filter-group="type" data-filter="exhibition" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">Àü½ÃÈ¸</button>
-                        <button data-filter-group="type" data-filter="performance" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">°ø¿¬</button>
+                        <button data-filter-group="type" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ëª¨ë‘</button>
+                        <button data-filter-group="type" data-filter="exhibition" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ì „ì‹œíšŒ</button>
+                        <button data-filter-group="type" data-filter="performance" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">ê³µì—°</button>
                     </div>
                 </div>
             </div>
@@ -106,8 +106,8 @@
         </main>
         
         <section id="visualization" class="mt-16 bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
-            <h2 class="text-2xl font-bold text-center mb-2 text-amber-900">µ¥ÀÌÆ® ºñ¿ë ÇÑ´«¿¡ ºñ±³ÇÏ±â</h2>
-            <p class="text-center text-stone-600 mb-6">°¢ È°µ¿ÀÇ 1ÀÎ ±âÁØ ±âº» ÀÔÀå·á¸¦ ºñ±³ÇÏ¿© ¿¹»ê °èÈ¹¿¡ Âü°íÇÏ¼¼¿ä.</p>
+            <h2 class="text-2xl font-bold text-center mb-2 text-amber-900">ë°ì´íŠ¸ ë¹„ìš© í•œëˆˆì— ë¹„êµí•˜ê¸°</h2>
+            <p class="text-center text-stone-600 mb-6">ê° í™œë™ì˜ 1ì¸ ê¸°ì¤€ ê¸°ë³¸ ìž…ìž¥ë£Œë¥¼ ë¹„êµí•˜ì—¬ ì˜ˆì‚° ê³„íšì— ì°¸ê³ í•˜ì„¸ìš”.</p>
             <div class="chart-container">
                 <canvas id="priceChart"></canvas>
             </div>
@@ -125,93 +125,93 @@
             events: [
                 {
                     id: 1,
-                    name: "¼­¿ïÀÏ·¯½ºÆ®·¹ÀÌ¼ÇÆä¾îvol.19",
+                    name: "ì„œìš¸ì¼ëŸ¬ìŠ¤íŠ¸ë ˆì´ì…˜íŽ˜ì–´vol.19",
                     type: "exhibition",
                     isLastDay: true,
                     vibes: ["trendy"],
                     price: 15000,
                     rating: 4.0,
-                    location: "ÄÚ¿¢½º CÈ¦",
+                    location: "ì½”ì—‘ìŠ¤ Cí™€",
                     locationKey: "coex",
                     time: "10:00 ~ 18:00",
-                    age: "ÀüÃ¼ °ü¶÷°¡",
-                    description: "±¹³» ÃÖ´ë ±Ô¸ðÀÇ ÀÏ·¯½ºÆ®·¹ÀÌ¼Ç Àü¹® Àü½ÃÈ¸·Î, °³¼º ³ÑÄ¡´Â ÀÛÇ°°ú ¾ÆÆ® »óÇ°À» ¸¸³¯ ¼ö ÀÖ½À´Ï´Ù. ¾Æ±âÀÚ±âÇÏ°í Æ®·»µðÇÑ ÀÛÇ°À» º¸¸ç ¼­·ÎÀÇ ÃëÇâÀ» °øÀ¯ÇÏ°í ±â³äÇ°À» ±¸¸ÅÇÏ´Â Àç¹Ì°¡ ÀÖ½À´Ï´Ù.",
-                    details: "ÀÔÀå ¸¶°¨Àº 17:00ÀÌ¸ç, ÁÖ¸» ¸¶Áö¸· ³¯ÀÌ¶ó ÇöÀå ´ë±â°¡ ¹ß»ýÇÒ ¼ö ÀÖÀ¸´Ï ¿©À¯·Ó°Ô ¹æ¹®ÇÏ´Â °ÍÀÌ ÁÁ½À´Ï´Ù."
+                    age: "ì „ì²´ ê´€ëžŒê°€",
+                    description: "êµ­ë‚´ ìµœëŒ€ ê·œëª¨ì˜ ì¼ëŸ¬ìŠ¤íŠ¸ë ˆì´ì…˜ ì „ë¬¸ ì „ì‹œíšŒë¡œ, ê°œì„± ë„˜ì¹˜ëŠ” ìž‘í’ˆê³¼ ì•„íŠ¸ ìƒí’ˆì„ ë§Œë‚  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì•„ê¸°ìžê¸°í•˜ê³  íŠ¸ë Œë””í•œ ìž‘í’ˆì„ ë³´ë©° ì„œë¡œì˜ ì·¨í–¥ì„ ê³µìœ í•˜ê³  ê¸°ë…í’ˆì„ êµ¬ë§¤í•˜ëŠ” ìž¬ë¯¸ê°€ ìžˆìŠµë‹ˆë‹¤.",
+                    details: "ìž…ìž¥ ë§ˆê°ì€ 17:00ì´ë©°, ì£¼ë§ ë§ˆì§€ë§‰ ë‚ ì´ë¼ í˜„ìž¥ ëŒ€ê¸°ê°€ ë°œìƒí•  ìˆ˜ ìžˆìœ¼ë‹ˆ ì—¬ìœ ë¡­ê²Œ ë°©ë¬¸í•˜ëŠ” ê²ƒì´ ì¢‹ìŠµë‹ˆë‹¤."
                 },
                 {
                     id: 2,
-                    name: "±¹¸³Çö´ë¹Ì¼ú°ü ¼­¿ï°ü Àü½Ã",
+                    name: "êµ­ë¦½í˜„ëŒ€ë¯¸ìˆ ê´€ ì„œìš¸ê´€ ì „ì‹œ",
                     type: "exhibition",
                     isLastDay: false,
                     vibes: ["intellectual"],
                     price: 7000,
                     rating: 4.5,
-                    location: "±¹¸³Çö´ë¹Ì¼ú°ü ¼­¿ï°ü",
+                    location: "êµ­ë¦½í˜„ëŒ€ë¯¸ìˆ ê´€ ì„œìš¸ê´€",
                     locationKey: "mmca",
                     time: "10:00 ~ 18:00",
-                    age: "ÀüÃ¼ °ü¶÷°¡",
-                    description: "´Ù¾çÇÑ Çö´ë¹Ì¼ú Àü½Ã¸¦ µ¿½Ã¿¡ ¼±º¸ÀÌ´Â º¹ÇÕ¹®È­°ø°£ÀÔ´Ï´Ù. °íÁî³ËÇÑ »ïÃ»µ¿°ú ÀÎÁ¢ÇØ Àü½Ã °ü¶÷ ÈÄ µ¥ÀÌÆ®¸¦ Áñ±â±â ÁÁ½À´Ï´Ù. ÅëÇÕ °ü¶÷±ÇÀ¸·Î ¿©·¯ Àü½Ã¸¦ °¨»óÇÒ ¼ö ÀÖ½À´Ï´Ù.",
-                    details: "7/27 ÁÖ¿ä Àü½Ã: ÇÏÀÌ³Ê ±«º§½º ?°ÕÄÚ-¾È 03062?, 2025 ¸·°£: °æ°è¿¡ ¸Ó¹«´Â ½Ã¼±, ¼­¿ï ·Î¹öÆ® ºñ¹ö½º µî. ÀÔÀå ¸¶°¨Àº 17:00ÀÔ´Ï´Ù."
+                    age: "ì „ì²´ ê´€ëžŒê°€",
+                    description: "ë‹¤ì–‘í•œ í˜„ëŒ€ë¯¸ìˆ  ì „ì‹œë¥¼ ë™ì‹œì— ì„ ë³´ì´ëŠ” ë³µí•©ë¬¸í™”ê³µê°„ìž…ë‹ˆë‹¤. ê³ ì¦ˆë„‰í•œ ì‚¼ì²­ë™ê³¼ ì¸ì ‘í•´ ì „ì‹œ ê´€ëžŒ í›„ ë°ì´íŠ¸ë¥¼ ì¦ê¸°ê¸° ì¢‹ìŠµë‹ˆë‹¤. í†µí•© ê´€ëžŒê¶Œìœ¼ë¡œ ì—¬ëŸ¬ ì „ì‹œë¥¼ ê°ìƒí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                    details: "7/27 ì£¼ìš” ì „ì‹œ: í•˜ì´ë„ˆ ê´´ë²¨ìŠ¤ ?ê²ì½”-ì•ˆ 03062?, 2025 ë§‰ê°„: ê²½ê³„ì— ë¨¸ë¬´ëŠ” ì‹œì„ , ì„œìš¸ ë¡œë²„íŠ¸ ë¹„ë²„ìŠ¤ ë“±. ìž…ìž¥ ë§ˆê°ì€ 17:00ìž…ë‹ˆë‹¤."
                 },
                 {
                     id: 3,
-                    name: "¼­ÁöÀÎ : »ì¿¡ »õ±ä ¼¶±¤",
+                    name: "ì„œì§€ì¸ : ì‚´ì— ìƒˆê¸´ ì„¬ê´‘",
                     type: "exhibition",
                     isLastDay: true,
                     vibes: ["intellectual"],
                     price: 0,
                     rating: 3.5,
-                    location: "ÄÚ¼Ò (COSO)",
+                    location: "ì½”ì†Œ (COSO)",
                     locationKey: "coso",
                     time: "13:00 ~ 19:00",
-                    age: "ÀüÃ¼ °ü¶÷°¡",
-                    description: "µ¶Æ¯ÇÑ ÁÖÁ¦¿Í Ç¥Çö ¹æ½ÄÀÌ µ¸º¸ÀÌ´Â ¼­ÁöÀÎ ÀÛ°¡ÀÇ °³ÀÎÀüÀÔ´Ï´Ù. ¾Æ´ÁÇÑ °¶·¯¸® °ø°£¿¡¼­ ÀÛÇ°À» ±íÀÌ ÀÖ°Ô °¨»óÇÒ ¼ö ÀÖÀ¸¸ç, ¹«·á °ü¶÷ÀÌ¶ó ºÎ´ã ¾øÀÌ Áñ±æ ¼ö ÀÖ½À´Ï´Ù.",
-                    details: "Àå¼Ò: ¼­¿ï½Ã Áß±¸ Ã¢°æ±Ã·Î5±æ 32, 3Ãþ. ¿ù¿äÀÏ ÈÞ¹«."
+                    age: "ì „ì²´ ê´€ëžŒê°€",
+                    description: "ë…íŠ¹í•œ ì£¼ì œì™€ í‘œí˜„ ë°©ì‹ì´ ë‹ë³´ì´ëŠ” ì„œì§€ì¸ ìž‘ê°€ì˜ ê°œì¸ì „ìž…ë‹ˆë‹¤. ì•„ëŠ‘í•œ ê°¤ëŸ¬ë¦¬ ê³µê°„ì—ì„œ ìž‘í’ˆì„ ê¹Šì´ ìžˆê²Œ ê°ìƒí•  ìˆ˜ ìžˆìœ¼ë©°, ë¬´ë£Œ ê´€ëžŒì´ë¼ ë¶€ë‹´ ì—†ì´ ì¦ê¸¸ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                    details: "ìž¥ì†Œ: ì„œìš¸ì‹œ ì¤‘êµ¬ ì°½ê²½ê¶ë¡œ5ê¸¸ 32, 3ì¸µ. ì›”ìš”ì¼ íœ´ë¬´."
                 },
                 {
                     id: 4,
-                    name: "¿ì¸®´Â ²÷ÀÓ¾øÀÌ ´Ù¸¥ °­¿¡ ½º¸çµç´Ù",
+                    name: "ìš°ë¦¬ëŠ” ëŠìž„ì—†ì´ ë‹¤ë¥¸ ê°•ì— ìŠ¤ë©°ë“ ë‹¤",
                     type: "exhibition",
                     isLastDay: true,
                     vibes: ["intellectual"],
                     price: 0,
                     rating: 3.0,
-                    location: "¼­¿ï½Ã¸³ ¹Ì¼ú¾ÆÄ«ÀÌºê",
+                    location: "ì„œìš¸ì‹œë¦½ ë¯¸ìˆ ì•„ì¹´ì´ë¸Œ",
                     locationKey: "sema_archive",
                     time: "10:00 ~ 19:00",
-                    age: "ÀüÃ¼ °ü¶÷°¡",
-                    description: "Çö´ë¹Ì¼úÀÇ Èå¸§°ú ¾ÆÄ«ÀÌºêÀÇ ¿ªÇÒÀ» Å½»öÇÏ´Â Àü½ÃÀÔ´Ï´Ù. ¿¹¼ú¿¡ ´ëÇÑ ±íÀÌ ÀÖ´Â ´ëÈ­¸¦ ³ª´­ ¼ö ÀÖ´Â ÁöÀûÀÎ µ¥ÀÌÆ® ÄÚ½º·Î ÀûÇÕÇÕ´Ï´Ù.",
-                    details: "¼­¿ï½Ã¸³¹Ì¼ú°ü °è¿­Àº ¹«·á Àü½Ã°¡ ¸¹Àº ÆíÀÔ´Ï´Ù."
+                    age: "ì „ì²´ ê´€ëžŒê°€",
+                    description: "í˜„ëŒ€ë¯¸ìˆ ì˜ íë¦„ê³¼ ì•„ì¹´ì´ë¸Œì˜ ì—­í• ì„ íƒìƒ‰í•˜ëŠ” ì „ì‹œìž…ë‹ˆë‹¤. ì˜ˆìˆ ì— ëŒ€í•œ ê¹Šì´ ìžˆëŠ” ëŒ€í™”ë¥¼ ë‚˜ëˆŒ ìˆ˜ ìžˆëŠ” ì§€ì ì¸ ë°ì´íŠ¸ ì½”ìŠ¤ë¡œ ì í•©í•©ë‹ˆë‹¤.",
+                    details: "ì„œìš¸ì‹œë¦½ë¯¸ìˆ ê´€ ê³„ì—´ì€ ë¬´ë£Œ ì „ì‹œê°€ ë§Žì€ íŽ¸ìž…ë‹ˆë‹¤."
                 },
                 {
                     id: 5,
-                    name: "2025 ¼­¿ï¹Ù¾Ø½ºÇÇ¸´¼î",
+                    name: "2025 ì„œìš¸ë°”ì•¤ìŠ¤í”¼ë¦¿ì‡¼",
                     type: "exhibition",
                     isLastDay: true,
                     vibes: ["unique", "trendy"],
                     price: 26000,
                     rating: 4.0,
-                    location: "ÄÚ¿¢½º DÈ¦",
+                    location: "ì½”ì—‘ìŠ¤ Dí™€",
                     locationKey: "coex",
                     time: "11:00 ~ 18:00",
-                    age: "¸¸ 19¼¼ ÀÌ»ó",
-                    description: "´Ù¾çÇÑ ÁÖ·ù ºê·£µå¸¦ ¸¸³ª°í ½ÃÀ½ÇÒ ¼ö ÀÖ´Â ÁÖ·ù Àü¹® Àü½ÃÈ¸ÀÔ´Ï´Ù. ¼ºÀÎ Ä¿ÇÃ¿¡°Ô Æ¯º°ÇÏ°í ÀÌ»öÀûÀÎ °æÇèÀ» ¼±»çÇÏ¸ç, »õ·Î¿î °æÇèÀ» Ãß±¸ÇÏ´Â Ä¿ÇÃ¿¡°Ô ÃßÃµÇÕ´Ï´Ù.",
-                    details: "ÀÔÀå ¸¶°¨ 17:00. ¸¸ 19¼¼ ÀÌ»ó ¼ºÀÎ¸¸ ÀÔÀå °¡´ÉÇÕ´Ï´Ù."
+                    age: "ë§Œ 19ì„¸ ì´ìƒ",
+                    description: "ë‹¤ì–‘í•œ ì£¼ë¥˜ ë¸Œëžœë“œë¥¼ ë§Œë‚˜ê³  ì‹œìŒí•  ìˆ˜ ìžˆëŠ” ì£¼ë¥˜ ì „ë¬¸ ì „ì‹œíšŒìž…ë‹ˆë‹¤. ì„±ì¸ ì»¤í”Œì—ê²Œ íŠ¹ë³„í•˜ê³  ì´ìƒ‰ì ì¸ ê²½í—˜ì„ ì„ ì‚¬í•˜ë©°, ìƒˆë¡œìš´ ê²½í—˜ì„ ì¶”êµ¬í•˜ëŠ” ì»¤í”Œì—ê²Œ ì¶”ì²œí•©ë‹ˆë‹¤.",
+                    details: "ìž…ìž¥ ë§ˆê° 17:00. ë§Œ 19ì„¸ ì´ìƒ ì„±ì¸ë§Œ ìž…ìž¥ ê°€ëŠ¥í•©ë‹ˆë‹¤."
                 },
                 {
                     id: 6,
-                    name: "À¯´Ï¹ö¼³¹ß·¹´Ü <¹éÁ¶ÀÇ È£¼ö>",
+                    name: "ìœ ë‹ˆë²„ì„¤ë°œë ˆë‹¨ <ë°±ì¡°ì˜ í˜¸ìˆ˜>",
                     type: "performance",
                     isLastDay: true,
                     vibes: ["romantic"],
                     price: 90000,
                     rating: 5.0,
-                    location: "¿¹¼úÀÇÀü´ç ¿ÀÆä¶ó±ØÀå",
+                    location: "ì˜ˆìˆ ì˜ì „ë‹¹ ì˜¤íŽ˜ë¼ê·¹ìž¥",
                     locationKey: "sac",
-                    time: "14:00 (150ºÐ)",
-                    age: "ÃÊµîÇÐ»ý ÀÌ»ó",
-                    description: "Å¬·¡½Ä ¹ß·¹ÀÇ Àý´ë ¸íÀÛÀ» À¯´Ï¹ö¼³¹ß·¹´ÜÀÇ È¯»óÀûÀÎ ±º¹«·Î ¸¸³ªº¸¼¼¿ä. 7¿ù 27ÀÏÀº ÀÌ¹ø ½ÃÁð ¸¶Áö¸· °ø¿¬À¸·Î, ·Î¸ÇÆ½ µ¥ÀÌÆ®ÀÇ Á¤Á¡À» ÂïÀ» ¼ö ÀÖ´Â Æ¯º°ÇÑ ±âÈ¸ÀÔ´Ï´Ù.",
-                    details: "°¡°Ý: R¼® 14¸¸¿ø, S¼® 12¸¸¿ø, A¼® 9¸¸¿ø µî. 7/27 Ä³½ºÆÃ: ÀÌÀ¯¸²(¿Àµ¥Æ®/¿Àµô), ÄÜ½ºÅºÆ¾ ³ëº¸¼¿·ÎÇÁ(Áö±×ÇÁ¸®µå)."
+                    time: "14:00 (150ë¶„)",
+                    age: "ì´ˆë“±í•™ìƒ ì´ìƒ",
+                    description: "í´ëž˜ì‹ ë°œë ˆì˜ ì ˆëŒ€ ëª…ìž‘ì„ ìœ ë‹ˆë²„ì„¤ë°œë ˆë‹¨ì˜ í™˜ìƒì ì¸ êµ°ë¬´ë¡œ ë§Œë‚˜ë³´ì„¸ìš”. 7ì›” 27ì¼ì€ ì´ë²ˆ ì‹œì¦Œ ë§ˆì§€ë§‰ ê³µì—°ìœ¼ë¡œ, ë¡œë§¨í‹± ë°ì´íŠ¸ì˜ ì •ì ì„ ì°ì„ ìˆ˜ ìžˆëŠ” íŠ¹ë³„í•œ ê¸°íšŒìž…ë‹ˆë‹¤.",
+                    details: "ê°€ê²©: Rì„ 14ë§Œì›, Sì„ 12ë§Œì›, Aì„ 9ë§Œì› ë“±. 7/27 ìºìŠ¤íŒ…: ì´ìœ ë¦¼(ì˜¤ë°íŠ¸/ì˜¤ë”œ), ì½˜ìŠ¤íƒ„í‹´ ë…¸ë³´ì…€ë¡œí”„(ì§€ê·¸í”„ë¦¬ë“œ)."
                 },
                 {
                     id: 7,
@@ -221,29 +221,29 @@
                     vibes: ["trendy"],
                     price: -1,
                     rating: 3.0,
-                    location: "¿Ã¸²ÇÈ°ø¿ø KSPO DOME",
+                    location: "ì˜¬ë¦¼í”½ê³µì› KSPO DOME",
                     locationKey: "olympic_park",
-                    time: "Á¤º¸ ¾øÀ½",
-                    age: "Á¤º¸ ¾øÀ½",
-                    description: "ÀÎ±â ¾ÆÀÌµ¹ ±×·ì º¸ÀÌ³Ø½ºÆ®µµ¾îÀÇ ÆÄÀÌ³Î ÄÜ¼­Æ®ÀÔ´Ï´Ù. K-POPÀ» ÁÁ¾ÆÇÏ°Å³ª È°±âÂù ¿¡³ÊÁö¸¦ ´À³¢°í ½ÍÀº Ä¿ÇÃ¿¡°Ô Èï¹Ì·Î¿î ¼±ÅÃÁö°¡ µÉ ¼ö ÀÖ½À´Ï´Ù.",
-                    details: "Á¤È®ÇÑ °ø¿¬ ½Ã°£ ¹× Æ¼ÄÏ °¡°ÝÀº º°µµ È®ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù."
+                    time: "ì •ë³´ ì—†ìŒ",
+                    age: "ì •ë³´ ì—†ìŒ",
+                    description: "ì¸ê¸° ì•„ì´ëŒ ê·¸ë£¹ ë³´ì´ë„¥ìŠ¤íŠ¸ë„ì–´ì˜ íŒŒì´ë„ ì½˜ì„œíŠ¸ìž…ë‹ˆë‹¤. K-POPì„ ì¢‹ì•„í•˜ê±°ë‚˜ í™œê¸°ì°¬ ì—ë„ˆì§€ë¥¼ ëŠë¼ê³  ì‹¶ì€ ì»¤í”Œì—ê²Œ í¥ë¯¸ë¡œìš´ ì„ íƒì§€ê°€ ë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
+                    details: "ì •í™•í•œ ê³µì—° ì‹œê°„ ë° í‹°ì¼“ ê°€ê²©ì€ ë³„ë„ í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤."
                 }
             ],
             restaurants: {
                 coex: [
-                    { name: "»Ç¸ðµµ·Î", menu: "ÆÄ½ºÅ¸, ¸®Á¶¶Ç", vibe: "Ä³ÁÖ¾ó ÀÌÅ»¸®¾È", price: "2¸¸¿ø´ë", rating: 4.0 },
-                    { name: "¿Â´õº¸´õ", menu: "Å¸ÄÚ, È­ÀÌÅ¸", vibe: "È°±âÂù ¸ß½ÃÄ­", price: "2~5¸¸¿ø´ë", rating: 4.0 },
-                    { name: "»þÀÌ¹Ù³ª", menu: "¹Ì±¹ ³²ºÎ °¡Á¤½Ä", vibe: "ÀÌ±¹Àû", price: "Á¤º¸ ¾øÀ½", rating: 0, note: "7/27(ÀÏ) ÈÞ¹«·Î ¹æ¹® ºÒ°¡" }
+                    { name: "ë½€ëª¨ë„ë¡œ", menu: "íŒŒìŠ¤íƒ€, ë¦¬ì¡°ë˜", vibe: "ìºì£¼ì–¼ ì´íƒˆë¦¬ì•ˆ", price: "2ë§Œì›ëŒ€", rating: 4.0 },
+                    { name: "ì˜¨ë”ë³´ë”", menu: "íƒ€ì½”, í™”ì´íƒ€", vibe: "í™œê¸°ì°¬ ë©•ì‹œì¹¸", price: "2~5ë§Œì›ëŒ€", rating: 4.0 },
+                    { name: "ìƒ¤ì´ë°”ë‚˜", menu: "ë¯¸êµ­ ë‚¨ë¶€ ê°€ì •ì‹", vibe: "ì´êµ­ì ", price: "ì •ë³´ ì—†ìŒ", rating: 0, note: "7/27(ì¼) íœ´ë¬´ë¡œ ë°©ë¬¸ ë¶ˆê°€" }
                 ],
                 mmca: [
-                    { name: "ÁøÀÛÄ«Å° ¾È±¹Á¡", menu: "ÈÄÅä¸¶³¢, ÇØ»ê¹° ¿ä¸®", vibe: "¼¼·ÃµÈ ÀÏ½Ä ´ÙÀÌ´×", price: "1ÀÎ 4.5¸¸¿ø ³»¿Ü", rating: 4.0 },
-                    { name: "µµÆ®ºí·©Å¶ »ïÃ»ÇÑ¿ÁÁ¡", menu: "ºê·±Ä¡, Ä¿ÇÇ", vibe: "¾Æ´ÁÇÑ ÇÑ¿Á", price: "1~2¸¸¿ø´ë", rating: 4.0 },
-                    { name: "°í¸Þ ¿Àµå »ïÃ»µ¿", menu: "»ý¸é ÆÄ½ºÅ¸", vibe: "¸ð´ø & ¼¼·Ã", price: "Á¤º¸ ¾øÀ½", rating: 4.0 }
+                    { name: "ì§„ìž‘ì¹´í‚¤ ì•ˆêµ­ì ", menu: "í›„í† ë§ˆë¼, í•´ì‚°ë¬¼ ìš”ë¦¬", vibe: "ì„¸ë ¨ëœ ì¼ì‹ ë‹¤ì´ë‹", price: "1ì¸ 4.5ë§Œì› ë‚´ì™¸", rating: 4.0 },
+                    { name: "ë„íŠ¸ë¸”ëž­í‚· ì‚¼ì²­í•œì˜¥ì ", menu: "ë¸ŒëŸ°ì¹˜, ì»¤í”¼", vibe: "ì•„ëŠ‘í•œ í•œì˜¥", price: "1~2ë§Œì›ëŒ€", rating: 4.0 },
+                    { name: "ê³ ë©” ì˜¤ë“œ ì‚¼ì²­ë™", menu: "ìƒë©´ íŒŒìŠ¤íƒ€", vibe: "ëª¨ë˜ & ì„¸ë ¨", price: "ì •ë³´ ì—†ìŒ", rating: 4.0 }
                 ],
                 sac: [
-                    { name: "Da Pitta", menu: "È­´öÇÇÀÚ, ÆÄ½ºÅ¸", vibe: "¾Æ´ÁÇÑ ÀÌÅ»¸®¾È", price: "2¸¸¿ø´ë", rating: 4.0 },
-                    { name: "¹é³â¿Á (º°°ü)", menu: "Äá±¹¼ö, ¼øµÎºÎ (¹Ì½¶·©)", vibe: "ÀüÅë ÇÑ½Ä", price: "1~2¸¸¿ø´ë", rating: 4.0 },
-                    { name: "Ä«³ªµð¾È ¶ø½ºÅÍ", menu: "¶ø½ºÅÍ ÄÚ½º ¿ä¸®", vibe: "°í±Þ & ÇÁ¶óÀÌºø", price: "7~8¸¸¿ø´ë", rating: 4.0 }
+                    { name: "Da Pitta", menu: "í™”ë•í”¼ìž, íŒŒìŠ¤íƒ€", vibe: "ì•„ëŠ‘í•œ ì´íƒˆë¦¬ì•ˆ", price: "2ë§Œì›ëŒ€", rating: 4.0 },
+                    { name: "ë°±ë…„ì˜¥ (ë³„ê´€)", menu: "ì½©êµ­ìˆ˜, ìˆœë‘ë¶€ (ë¯¸ìŠëž­)", vibe: "ì „í†µ í•œì‹", price: "1~2ë§Œì›ëŒ€", rating: 4.0 },
+                    { name: "ì¹´ë‚˜ë””ì•ˆ ëžìŠ¤í„°", menu: "ëžìŠ¤í„° ì½”ìŠ¤ ìš”ë¦¬", vibe: "ê³ ê¸‰ & í”„ë¼ì´ë¹—", price: "7~8ë§Œì›ëŒ€", rating: 4.0 }
                 ]
             }
         };
@@ -259,9 +259,9 @@
         const modalContent = document.getElementById('modal-content');
 
         function formatPrice(price) {
-            if (price < 0) return "Á¤º¸ ¾øÀ½";
-            if (price === 0) return "¹«·á";
-            return `${price.toLocaleString()}¿ø`;
+            if (price < 0) return "ì •ë³´ ì—†ìŒ";
+            if (price === 0) return "ë¬´ë£Œ";
+            return `${price.toLocaleString()}ì›`;
         }
         
         function getPriceCategory(price) {
@@ -277,7 +277,7 @@
             const halfStar = rating % 1 !== 0;
             let stars = '?'.repeat(fullStars);
             if (halfStar) stars += '?';
-            stars += '¡Ù'.repeat(5 - fullStars - (halfStar ? 1 : 0));
+            stars += 'â˜†'.repeat(5 - fullStars - (halfStar ? 1 : 0));
             return `<span class="text-amber-500">${stars}</span> <span class="text-sm text-stone-500 ml-1">(${rating.toFixed(1)})</span>`;
         }
         
@@ -299,7 +299,7 @@
 
             modalContent.innerHTML = `
                 <div class="p-6 md:p-8">
-                    ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">¸¶Áö¸· ³¯!</div>' : ''}
+                    ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">ë§ˆì§€ë§‰ ë‚ !</div>' : ''}
                     <h2 class="text-3xl font-bold mb-2 text-amber-900">${event.name}</h2>
                     <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-600 mb-4">
                         <span>${renderStars(event.rating)}</span>
@@ -310,13 +310,13 @@
                     </div>
                     <p class="mb-4">${event.description}</p>
                     <div class="bg-amber-100/50 p-4 rounded-lg text-sm">
-                        <h4 class="font-bold mb-1 text-amber-800">¾Ë¾ÆµÎ¸é ÁÁÀº Á¡</h4>
+                        <h4 class="font-bold mb-1 text-amber-800">ì•Œì•„ë‘ë©´ ì¢‹ì€ ì </h4>
                         <p>${event.details}</p>
                     </div>
 
                     ${nearbyRestaurants.length > 0 ? `
                     <div class="mt-6">
-                        <h3 class="text-xl font-bold mb-3 text-amber-900">ÁÖº¯ ÃßÃµ ¸ÀÁý</h3>
+                        <h3 class="text-xl font-bold mb-3 text-amber-900">ì£¼ë³€ ì¶”ì²œ ë§›ì§‘</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             ${nearbyRestaurants.map(renderRestaurantCard).join('')}
                         </div>
@@ -349,8 +349,8 @@
 
             if (filteredEvents.length === 0) {
                 resultsContainer.innerHTML = `<div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12 bg-white rounded-lg shadow-md">
-                    <p class="text-xl text-stone-600">¾Æ½±Áö¸¸, Á¶°Ç¿¡ ¸Â´Â È°µ¿ÀÌ ¾ø¾î¿ä. ??</p>
-                    <p class="text-stone-500 mt-2">ÇÊÅÍ¸¦ Á¶Á¤ÇØ¼­ ´Ù½Ã Ã£¾Æº¸¼¼¿ä!</p>
+                    <p class="text-xl text-stone-600">ì•„ì‰½ì§€ë§Œ, ì¡°ê±´ì— ë§žëŠ” í™œë™ì´ ì—†ì–´ìš”. ??</p>
+                    <p class="text-stone-500 mt-2">í•„í„°ë¥¼ ì¡°ì •í•´ì„œ ë‹¤ì‹œ ì°¾ì•„ë³´ì„¸ìš”!</p>
                 </div>`;
                 return;
             }
@@ -361,12 +361,12 @@
                 card.dataset.eventId = event.id;
                 
                 let priceDisplay = formatPrice(event.price);
-                let typeDisplay = event.type === 'exhibition' ? 'Àü½ÃÈ¸' : '°ø¿¬';
+                let typeDisplay = event.type === 'exhibition' ? 'ì „ì‹œíšŒ' : 'ê³µì—°';
                 let typeColor = event.type === 'exhibition' ? 'bg-rose-100 text-rose-800' : 'bg-sky-100 text-sky-800';
 
                 card.innerHTML = `
                     <div class="p-6 flex-grow">
-                        ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">¸¶Áö¸· ³¯!</div>' : ''}
+                        ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">ë§ˆì§€ë§‰ ë‚ !</div>' : ''}
                         <div class="flex justify-between items-start mb-2">
                              <span class="text-xs font-semibold ${typeColor} py-1 px-2 rounded-full">${typeDisplay}</span>
                              <div class="text-right">${renderStars(event.rating)}</div>
@@ -409,7 +409,7 @@
                 data: {
                     labels: chartData.map(e => e.name),
                     datasets: [{
-                        label: '1ÀÎ ÀÔÀå·á (¿ø)',
+                        label: '1ì¸ ìž…ìž¥ë£Œ (ì›)',
                         data: chartData.map(e => e.price),
                         backgroundColor: 'rgba(217, 119, 6, 0.6)',
                         borderColor: 'rgba(217, 119, 6, 1)',
@@ -426,7 +426,7 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value, index, values) {
-                                    return value.toLocaleString() + '¿ø';
+                                    return value.toLocaleString() + 'ì›';
                                 }
                             }
                         },
@@ -451,7 +451,7 @@
                                         label += ': ';
                                     }
                                     if (context.parsed.x !== null) {
-                                        label += context.parsed.x.toLocaleString() + '¿ø';
+                                        label += context.parsed.x.toLocaleString() + 'ì›';
                                     }
                                     return label;
                                 }
