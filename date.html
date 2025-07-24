@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 서울 데이트 플래너</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Amber Accent -->
+    <!-- Application Structure Plan: A user-centric, filter-driven dashboard. The user first defines their desired date 'vibe' and 'budget'. The application then presents matching events (exhibitions/performances) as interactive cards. Clicking a card opens a detailed modal which includes logically linked nearby restaurant recommendations. This structure prioritizes user tasks over the report's linear format, making information discovery intuitive and efficient by connecting activities with dining options in one view. -->
+    <!-- Visualization & Content Choices: Report Info (Event prices) -> Goal (Compare costs) -> Viz (Bar Chart) -> Interaction (Hover tooltips) -> Justification (Provides a quick, visual summary of a key decision factor) -> Library (Chart.js/Canvas). Report Info (Event details) -> Goal (Inform/Organize) -> Presentation (Filterable Cards & Detail Modals) -> Interaction (Click to filter, click to view details) -> Justification (Modern, user-friendly SPA pattern for exploration) -> Method (HTML/CSS/JS). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #FDFBF8;
+            color: #44403c;
+        }
+        .filter-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .filter-btn.active {
+            background-color: #d97706;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+        }
+        .event-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .last-day-tag {
+            background: linear-gradient(45deg, #ef4444, #f97316);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-stone-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-amber-900">2025년 7월 27일, 완벽한 서울 데이트 찾기</h1>
+            <p class="mt-4 text-lg text-stone-600">사랑하는 사람과 함께할 특별한 하루, 취향에 맞는 최고의 실내 데이트를 찾아보세요.</p>
+        </header>
+
+        <section id="filters" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">1. 어떤 분위기를 원하세요?</h3>
+                    <div id="vibe-filters" class="flex flex-wrap gap-2">
+                        <button data-filter-group="vibe" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">모두</button>
+                        <button data-filter-group="vibe" data-filter="romantic" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? 로맨틱 클래식</button>
+                        <button data-filter-group="vibe" data-filter="trendy" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">? 트렌디 & 활기찬</button>
+                        <button data-filter-group="vibe" data-filter="intellectual" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? 지적인 예술 감상</button>
+                        <button data-filter-group="vibe" data-filter="unique" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">?? 이색적인 경험</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">2. 1인당 예산은 얼마인가요?</h3>
+                    <div id="price-filters" class="flex flex-wrap gap-2">
+                        <button data-filter-group="price" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">모두</button>
+                        <button data-filter-group="price" data-filter="0" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">무료</button>
+                        <button data-filter-group="price" data-filter="20000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">~2만원</button>
+                        <button data-filter-group="price" data-filter="50000" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">2~5만원</button>
+                        <button data-filter-group="price" data-filter="50001" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">5만원 이상</button>
+                    </div>
+                </div>
+                 <div>
+                    <h3 class="font-bold text-lg mb-3 text-amber-800">3. 어떤 활동을 찾으세요?</h3>
+                    <div id="type-filters" class="flex flex-wrap gap-2">
+                        <button data-filter-group="type" data-filter="all" class="filter-btn active text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">모두</button>
+                        <button data-filter-group="type" data-filter="exhibition" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">전시회</button>
+                        <button data-filter-group="type" data-filter="performance" class="filter-btn text-sm font-semibold bg-white text-amber-700 py-2 px-4 rounded-full shadow-sm hover:bg-amber-100">공연</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main id="results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        </main>
+        
+        <section id="visualization" class="mt-16 bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-center mb-2 text-amber-900">데이트 비용 한눈에 비교하기</h2>
+            <p class="text-center text-stone-600 mb-6">각 활동의 1인 기준 기본 입장료를 비교하여 예산 계획에 참고하세요.</p>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div id="modal-content" class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95">
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            events: [
+                {
+                    id: 1,
+                    name: "서울일러스트레이션페어vol.19",
+                    type: "exhibition",
+                    isLastDay: true,
+                    vibes: ["trendy"],
+                    price: 15000,
+                    rating: 4.0,
+                    location: "코엑스 C홀",
+                    locationKey: "coex",
+                    time: "10:00 ~ 18:00",
+                    age: "전체 관람가",
+                    description: "국내 최대 규모의 일러스트레이션 전문 전시회로, 개성 넘치는 작품과 아트 상품을 만날 수 있습니다. 아기자기하고 트렌디한 작품을 보며 서로의 취향을 공유하고 기념품을 구매하는 재미가 있습니다.",
+                    details: "입장 마감은 17:00이며, 주말 마지막 날이라 현장 대기가 발생할 수 있으니 여유롭게 방문하는 것이 좋습니다."
+                },
+                {
+                    id: 2,
+                    name: "국립현대미술관 서울관 전시",
+                    type: "exhibition",
+                    isLastDay: false,
+                    vibes: ["intellectual"],
+                    price: 7000,
+                    rating: 4.5,
+                    location: "국립현대미술관 서울관",
+                    locationKey: "mmca",
+                    time: "10:00 ~ 18:00",
+                    age: "전체 관람가",
+                    description: "다양한 현대미술 전시를 동시에 선보이는 복합문화공간입니다. 고즈넉한 삼청동과 인접해 전시 관람 후 데이트를 즐기기 좋습니다. 통합 관람권으로 여러 전시를 감상할 수 있습니다.",
+                    details: "7/27 주요 전시: 하이너 괴벨스 ?겐코-안 03062?, 2025 막간: 경계에 머무는 시선, 서울 로버트 비버스 등. 입장 마감은 17:00입니다."
+                },
+                {
+                    id: 3,
+                    name: "서지인 : 살에 새긴 섬광",
+                    type: "exhibition",
+                    isLastDay: true,
+                    vibes: ["intellectual"],
+                    price: 0,
+                    rating: 3.5,
+                    location: "코소 (COSO)",
+                    locationKey: "coso",
+                    time: "13:00 ~ 19:00",
+                    age: "전체 관람가",
+                    description: "독특한 주제와 표현 방식이 돋보이는 서지인 작가의 개인전입니다. 아늑한 갤러리 공간에서 작품을 깊이 있게 감상할 수 있으며, 무료 관람이라 부담 없이 즐길 수 있습니다.",
+                    details: "장소: 서울시 중구 창경궁로5길 32, 3층. 월요일 휴무."
+                },
+                {
+                    id: 4,
+                    name: "우리는 끊임없이 다른 강에 스며든다",
+                    type: "exhibition",
+                    isLastDay: true,
+                    vibes: ["intellectual"],
+                    price: 0,
+                    rating: 3.0,
+                    location: "서울시립 미술아카이브",
+                    locationKey: "sema_archive",
+                    time: "10:00 ~ 19:00",
+                    age: "전체 관람가",
+                    description: "현대미술의 흐름과 아카이브의 역할을 탐색하는 전시입니다. 예술에 대한 깊이 있는 대화를 나눌 수 있는 지적인 데이트 코스로 적합합니다.",
+                    details: "서울시립미술관 계열은 무료 전시가 많은 편입니다."
+                },
+                {
+                    id: 5,
+                    name: "2025 서울바앤스피릿쇼",
+                    type: "exhibition",
+                    isLastDay: true,
+                    vibes: ["unique", "trendy"],
+                    price: 26000,
+                    rating: 4.0,
+                    location: "코엑스 D홀",
+                    locationKey: "coex",
+                    time: "11:00 ~ 18:00",
+                    age: "만 19세 이상",
+                    description: "다양한 주류 브랜드를 만나고 시음할 수 있는 주류 전문 전시회입니다. 성인 커플에게 특별하고 이색적인 경험을 선사하며, 새로운 경험을 추구하는 커플에게 추천합니다.",
+                    details: "입장 마감 17:00. 만 19세 이상 성인만 입장 가능합니다."
+                },
+                {
+                    id: 6,
+                    name: "유니버설발레단 <백조의 호수>",
+                    type: "performance",
+                    isLastDay: true,
+                    vibes: ["romantic"],
+                    price: 90000,
+                    rating: 5.0,
+                    location: "예술의전당 오페라극장",
+                    locationKey: "sac",
+                    time: "14:00 (150분)",
+                    age: "초등학생 이상",
+                    description: "클래식 발레의 절대 명작을 유니버설발레단의 환상적인 군무로 만나보세요. 7월 27일은 이번 시즌 마지막 공연으로, 로맨틱 데이트의 정점을 찍을 수 있는 특별한 기회입니다.",
+                    details: "가격: R석 14만원, S석 12만원, A석 9만원 등. 7/27 캐스팅: 이유림(오데트/오딜), 콘스탄틴 노보셀로프(지그프리드)."
+                },
+                {
+                    id: 7,
+                    name: "BOYNEXTDOOR TOUR 'KNOCK ON Vol.1' FINAL",
+                    type: "performance",
+                    isLastDay: true,
+                    vibes: ["trendy"],
+                    price: -1,
+                    rating: 3.0,
+                    location: "올림픽공원 KSPO DOME",
+                    locationKey: "olympic_park",
+                    time: "정보 없음",
+                    age: "정보 없음",
+                    description: "인기 아이돌 그룹 보이넥스트도어의 파이널 콘서트입니다. K-POP을 좋아하거나 활기찬 에너지를 느끼고 싶은 커플에게 흥미로운 선택지가 될 수 있습니다.",
+                    details: "정확한 공연 시간 및 티켓 가격은 별도 확인이 필요합니다."
+                }
+            ],
+            restaurants: {
+                coex: [
+                    { name: "뽀모도로", menu: "파스타, 리조또", vibe: "캐주얼 이탈리안", price: "2만원대", rating: 4.0 },
+                    { name: "온더보더", menu: "타코, 화이타", vibe: "활기찬 멕시칸", price: "2~5만원대", rating: 4.0 },
+                    { name: "샤이바나", menu: "미국 남부 가정식", vibe: "이국적", price: "정보 없음", rating: 0, note: "7/27(일) 휴무로 방문 불가" }
+                ],
+                mmca: [
+                    { name: "진작카키 안국점", menu: "후토마끼, 해산물 요리", vibe: "세련된 일식 다이닝", price: "1인 4.5만원 내외", rating: 4.0 },
+                    { name: "도트블랭킷 삼청한옥점", menu: "브런치, 커피", vibe: "아늑한 한옥", price: "1~2만원대", rating: 4.0 },
+                    { name: "고메 오드 삼청동", menu: "생면 파스타", vibe: "모던 & 세련", price: "정보 없음", rating: 4.0 }
+                ],
+                sac: [
+                    { name: "Da Pitta", menu: "화덕피자, 파스타", vibe: "아늑한 이탈리안", price: "2만원대", rating: 4.0 },
+                    { name: "백년옥 (별관)", menu: "콩국수, 순두부 (미슐랭)", vibe: "전통 한식", price: "1~2만원대", rating: 4.0 },
+                    { name: "카나디안 랍스터", menu: "랍스터 코스 요리", vibe: "고급 & 프라이빗", price: "7~8만원대", rating: 4.0 }
+                ]
+            }
+        };
+
+        const state = {
+            vibe: 'all',
+            price: 'all',
+            type: 'all'
+        };
+
+        const resultsContainer = document.getElementById('results');
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function formatPrice(price) {
+            if (price < 0) return "정보 없음";
+            if (price === 0) return "무료";
+            return `${price.toLocaleString()}원`;
+        }
+        
+        function getPriceCategory(price) {
+            if (price === 0) return '0';
+            if (price > 0 && price <= 20000) return '20000';
+            if (price > 20000 && price <= 50000) return '50000';
+            if (price > 50000) return '50001';
+            return 'all';
+        }
+
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 !== 0;
+            let stars = '?'.repeat(fullStars);
+            if (halfStar) stars += '?';
+            stars += '☆'.repeat(5 - fullStars - (halfStar ? 1 : 0));
+            return `<span class="text-amber-500">${stars}</span> <span class="text-sm text-stone-500 ml-1">(${rating.toFixed(1)})</span>`;
+        }
+        
+        function renderRestaurantCard(restaurant) {
+            return `
+                <div class="bg-amber-50 rounded-lg p-4 ${restaurant.note ? 'opacity-60' : ''}">
+                    <h4 class="font-bold text-amber-800">${restaurant.name}</h4>
+                    <p class="text-sm text-stone-600">${restaurant.vibe}</p>
+                    <p class="text-sm text-stone-600">?? ${restaurant.menu}</p>
+                    <p class="text-sm text-stone-600">?? ${restaurant.price}</p>
+                    ${restaurant.note ? `<p class="text-sm font-bold text-red-600 mt-2">?? ${restaurant.note}</p>` : ''}
+                </div>
+            `;
+        }
+
+        function openModal(eventId) {
+            const event = data.events.find(e => e.id === eventId);
+            const nearbyRestaurants = data.restaurants[event.locationKey] || [];
+
+            modalContent.innerHTML = `
+                <div class="p-6 md:p-8">
+                    ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">마지막 날!</div>' : ''}
+                    <h2 class="text-3xl font-bold mb-2 text-amber-900">${event.name}</h2>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-600 mb-4">
+                        <span>${renderStars(event.rating)}</span>
+                        <span class="font-bold text-amber-700">${formatPrice(event.price)}</span>
+                        <span>?? ${event.location}</span>
+                        <span>?? ${event.time}</span>
+                        <span>?? ${event.age}</span>
+                    </div>
+                    <p class="mb-4">${event.description}</p>
+                    <div class="bg-amber-100/50 p-4 rounded-lg text-sm">
+                        <h4 class="font-bold mb-1 text-amber-800">알아두면 좋은 점</h4>
+                        <p>${event.details}</p>
+                    </div>
+
+                    ${nearbyRestaurants.length > 0 ? `
+                    <div class="mt-6">
+                        <h3 class="text-xl font-bold mb-3 text-amber-900">주변 추천 맛집</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            ${nearbyRestaurants.map(renderRestaurantCard).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+                <button id="closeModal" class="absolute top-0 right-0 mt-4 mr-4 text-stone-500 hover:text-stone-800 text-2xl">&times;</button>
+            `;
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('scale-95');
+        }
+        
+        function renderCards() {
+            resultsContainer.innerHTML = '';
+            
+            const filteredEvents = data.events.filter(event => {
+                const vibeMatch = state.vibe === 'all' || event.vibes.includes(state.vibe);
+                const priceMatch = state.price === 'all' || getPriceCategory(event.price) === state.price;
+                const typeMatch = state.type === 'all' || event.type === state.type;
+                return vibeMatch && priceMatch && typeMatch;
+            });
+
+            if (filteredEvents.length === 0) {
+                resultsContainer.innerHTML = `<div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12 bg-white rounded-lg shadow-md">
+                    <p class="text-xl text-stone-600">아쉽지만, 조건에 맞는 활동이 없어요. ??</p>
+                    <p class="text-stone-500 mt-2">필터를 조정해서 다시 찾아보세요!</p>
+                </div>`;
+                return;
+            }
+
+            filteredEvents.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'event-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer flex flex-col';
+                card.dataset.eventId = event.id;
+                
+                let priceDisplay = formatPrice(event.price);
+                let typeDisplay = event.type === 'exhibition' ? '전시회' : '공연';
+                let typeColor = event.type === 'exhibition' ? 'bg-rose-100 text-rose-800' : 'bg-sky-100 text-sky-800';
+
+                card.innerHTML = `
+                    <div class="p-6 flex-grow">
+                        ${event.isLastDay ? '<div class="last-day-tag absolute top-0 right-0 mt-4 -mr-1 text-white text-xs font-bold py-1 px-3 rounded-l-full shadow-lg">마지막 날!</div>' : ''}
+                        <div class="flex justify-between items-start mb-2">
+                             <span class="text-xs font-semibold ${typeColor} py-1 px-2 rounded-full">${typeDisplay}</span>
+                             <div class="text-right">${renderStars(event.rating)}</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-amber-900 mb-2">${event.name}</h3>
+                        <p class="text-sm text-stone-600 line-clamp-2 flex-grow">${event.description}</p>
+                    </div>
+                    <div class="bg-amber-100/50 px-6 py-3 flex justify-between items-center text-sm font-semibold">
+                        <span class="text-amber-800">?? ${event.location}</span>
+                        <span class="text-amber-700">${priceDisplay}</span>
+                    </div>
+                `;
+                card.addEventListener('click', () => openModal(event.id));
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        function handleFilterClick(e) {
+            if (e.target.tagName !== 'BUTTON') return;
+
+            const group = e.target.dataset.filterGroup;
+            const value = e.target.dataset.filter;
+
+            state[group] = value;
+
+            document.querySelectorAll(`#${group}-filters button`).forEach(btn => {
+                btn.classList.remove('active');
+            });
+            e.target.classList.add('active');
+
+            renderCards();
+        }
+        
+        function createPriceChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            const chartData = data.events.filter(e => e.price >= 0);
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.map(e => e.name),
+                    datasets: [{
+                        label: '1인 입장료 (원)',
+                        data: chartData.map(e => e.price),
+                        backgroundColor: 'rgba(217, 119, 6, 0.6)',
+                        borderColor: 'rgba(217, 119, 6, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return value.toLocaleString() + '원';
+                                }
+                            }
+                        },
+                        y: {
+                           ticks: {
+                                autoSkip: false,
+                                font: {
+                                    size: 10
+                                }
+                           }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x.toLocaleString() + '원';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.getElementById('vibe-filters').addEventListener('click', handleFilterClick);
+        document.getElementById('price-filters').addEventListener('click', handleFilterClick);
+        document.getElementById('type-filters').addEventListener('click', handleFilterClick);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards();
+            createPriceChart();
+        });
+    </script>
+</body>
+</html>
